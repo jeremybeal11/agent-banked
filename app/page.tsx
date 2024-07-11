@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useChat } from "ai/react";
 import va from "@vercel/analytics";
 import clsx from "clsx";
-import { SyndicateIcon, GithubIcon, LoadingCircle, SendIcon } from "./icons";
+import { LoadingCircle, SendIcon } from "./icons";
 import { Bot, User } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -12,7 +12,7 @@ import Textarea from "react-textarea-autosize";
 import { toast } from "sonner";
 
 const examples = [
-  "What are some ideas you might be interested in?",
+  "Send 10 USDC to...",
 ];
 
 export default function Chat() {
@@ -41,22 +41,6 @@ export default function Chat() {
 
   return (
     <main className="flex flex-col items-center justify-between pb-40">
-      <div className="absolute top-5 hidden w-full justify-between px-5 sm:flex">
-        <a
-          href="https://syndicate.io"
-          target="_blank"
-          className="rounded-lg p-2 transition-colors duration-200 hover:bg-stone-100 sm:bottom-auto"
-        >
-          <SyndicateIcon />
-        </a>
-        <a
-          href="https://github.com/ianDAOs/agent-banked"
-          target="_blank"
-          className="rounded-lg p-2 transition-colors duration-200 hover:bg-stone-100 sm:bottom-auto"
-        >
-          <GithubIcon />
-        </a>
-      </div>
       {messages.length > 0 ? (
         messages.map((message, i) => (
           <div
@@ -100,39 +84,6 @@ export default function Chat() {
             <h1 className="text-lg font-semibold text-black">
               AI Agent That Can Bank Itself {"("}Using Blockchains{")"}
             </h1>
-            <p className="text-gray-500">
-              This demo of an AI Agent uses{" "}
-              <a
-                href="https://docs.syndicate.io"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium underline underline-offset-4 transition-colors hover:text-black"
-              >
-                Syndicate{"'"}s Transaction Cloud API
-              </a>{" "}
-              and{" "}
-              <a
-                href="https://platform.openai.com/docs/guides/function-calling"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium underline underline-offset-4 transition-colors hover:text-black"
-              >
-                OpenAI Functions
-              </a>{" "}
-              to autonomously manage{" "}
-              <a
-                href="https://basescan.org/address/0x0F71d6FDd73f0E80AA6057c11Ca413bE06A7d1Fe"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium underline underline-offset-4 transition-colors hover:text-black"
-              >
-                this Safe multisig wallet
-              </a>{" "}
-              starting with 500 USDC.
-            </p>
-            <p className="text-gray-500">
-              This AI Agent is thinking about how to best use its capital. Do you have any ideas?
-            </p>
           </div>
           <div className="flex flex-col space-y-4 border-t border-gray-200 bg-gray-50 p-7 sm:p-10">
             {examples.map((example, i) => (
@@ -195,36 +146,6 @@ export default function Chat() {
             )}
           </button>
         </form>
-        <p className="text-center text-xs text-gray-400">
-          Built with{" "}
-          <a
-            href="https://docs.syndicate.io"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-black"
-          >
-            Syndicate{"'"}s API
-          </a>{" "}
-          and{" "}
-          <a
-            href="https://platform.openai.com/docs/guides/gpt/function-calling"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-black"
-          >
-            OpenAI Functions
-          </a>
-          . No backend for keys, wallets, transactions, gas, or RPCs was required.{" "} 
-          <a
-            href="https://github.com/ianDAOs/agent-banked"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-black"
-          >
-            View the repo
-          </a>
-          .
-        </p>
       </div>
     </main>
   );
